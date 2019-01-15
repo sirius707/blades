@@ -1,0 +1,45 @@
+# Project: fight
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o game.o anim.o physics.o stile.o s_queue.o $(RES)
+LINKOBJ  = main.o game.o anim.o physics.o stile.o s_queue.o $(RES)
+LIBS =  -L"lib" -lalleg -C  -lgmon -pg  -g3 
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = fight.exe
+CXXFLAGS = $(CXXINCS)   -pg -g3
+CFLAGS = $(INCS) -g -c   -pg -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before fight.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "fight.exe" $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+game.o: game.c
+	$(CC) -c game.c -o game.o $(CFLAGS)
+
+anim.o: anim.c
+	$(CC) -c anim.c -o anim.o $(CFLAGS)
+
+physics.o: physics.c
+	$(CC) -c physics.c -o physics.o $(CFLAGS)
+
+stile.o: stile.c
+	$(CC) -c stile.c -o stile.o $(CFLAGS)
+
+s_queue.o: s_queue.c
+	$(CC) -c s_queue.c -o s_queue.o $(CFLAGS)
